@@ -6,6 +6,11 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    services:
+      mongo:
+        image: mongo:5.0.4
+        ports:
+          - 27017:27017
     steps:
       - name: Set up Go
         uses: actions/setup-go@v1
