@@ -4,13 +4,13 @@ DOCKER_IMAGE:=abdollahpour/almaniha-draft
 
 compile:
 	for i in darwin linux windows ; do \
-		GOOS="$${i}" GOARCH=amd64 go build -ldflags "-X main.Version=$(APP_VERSION)" -o bin/mpg-server-"$${i}"-amd64 cmd/server/main.go; \
+		GOOS="$${i}" GOARCH=amd64 go build -ldflags "-X main.Version=$(APP_VERSION)" -o bin/mdm-server-"$${i}"-amd64 cmd/server/main.go; \
 	done
 
 archive:
 	rm -f bin/*.zip
 	for i in darwin linux windows ; do \
-		zip -j "bin/mpg-$${i}-amd64.zip" "bin/mpg-server-$${i}-amd64" -x "*.DS_Store"; \
+		zip -j "bin/mdm-$${i}-amd64.zip" "bin/mdm-server-$${i}-amd64" -x "*.DS_Store"; \
 	done
 
 run:
