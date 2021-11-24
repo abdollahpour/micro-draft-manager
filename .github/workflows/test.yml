@@ -25,7 +25,7 @@ jobs:
           go mod download
       - name: Run Unit tests
         run: |
-          CGO_ENABLED=0 go test -race -covermode atomic -coverprofile=covprofile ./...
+          CGO_ENABLED=0 go test -covermode atomic -coverprofile=covprofile ./...
       - name: Install goveralls
         run: go install github.com/mattn/goveralls@latest
       - name: Send coverage
