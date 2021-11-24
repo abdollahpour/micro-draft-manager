@@ -6,6 +6,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    container:
+      image: golang:1.17-alpine
     services:
       mongo:
         image: mongo:5.0.4
