@@ -6,6 +6,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      CGO_ENABLED: "0"
+      MONGO_URI: "mongodb://localhost:27017/draft"
     container:
       image: golang:1.17-alpine
     services:
@@ -25,7 +28,7 @@ jobs:
           go mod download
       - name: Run Unit tests
         run: |
-          CGO_ENABLED=0 go test -covermode atomic -coverprofile=covprofile ./...
+          go test -covermode atomic -coverprofile=covprofile ./...
       - name: Install goveralls
         run: go install github.com/mattn/goveralls@latest
       - name: Send coverage
