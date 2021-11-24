@@ -17,12 +17,13 @@ jobs:
         ports:
           - 27017:27017
     steps:
-      - name: Set up Go
-        uses: actions/setup-go@v1
-        with:
-          go-version: "1.17"
+      - name: Install git
+        run: |
+          apk update && apk upgrade && apk add --no-cache git
       - name: Check out code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
       - name: Install dependencies
         run: |
           go mod download
